@@ -16,7 +16,13 @@
  * ============================================================================
  */
 
-// #define ...
+#define SERVER_PORT 56700
+#define BUFFER_SIZE 512
+#define DEFAULT_IP "localhost"
+
+#define STATO_SUCCESSO 0
+#define STATO_CITTA_NON_DISPONIBILE 1
+#define STATO_RICHIESTA_NON_VALIDA 2
 
 /*
  * ============================================================================
@@ -24,7 +30,18 @@
  * ============================================================================
  */
 
-// Weather request and response structures 
+// Weather request and response structure
+typedef struct {
+    char type;         // 't', 'h', 'w', 'p'
+    char city[64];     // Nome citta
+} weather_request_t;
+
+// Weather response structure
+typedef struct {
+    unsigned int status; // 0=OK, 1=Err, 2=Inv
+    char type;           
+    float value;         
+} weather_response_t;
 
 /*
  * ============================================================================
@@ -32,7 +49,11 @@
  * ============================================================================
  */
 
-// Add here the signatures of the functions you implement
-
+// Funzioni implementate 
+float get_temperatura(void);
+float get_umidita(void);
+float get_vento(void);
+float get_pressione(void);
 
 #endif /* PROTOCOL_H_ */
+
