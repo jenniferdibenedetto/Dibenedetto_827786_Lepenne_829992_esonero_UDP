@@ -129,7 +129,7 @@ int main(int argc, char *argv[]) {
         weather_request_t req;
         int offset = 0;
 
-        if (byte_ricevuti >= (sizeof(char) + 1)) {
+        if (byte_ricevuti >= (int)(sizeof(char) + 1)) {
             memcpy(&req.type, buffer_rx + offset, sizeof(char));
             offset += sizeof(char);
 
